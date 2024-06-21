@@ -1,15 +1,33 @@
+name: Check IITC-CE for Updates
+
 on:
   schedule:
-    - cron: "0 0 * * *"
+    - cron: "0 0 * * 0"  # Run weekly on Sundays at midnight
+  workflow_dispatch:  # Allow manual triggering
+
 jobs:
-  repo-sync:
+  check-iitc-updates:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
-      - name: repo-sync
-        uses: repo-sync/github-sync@v2
+      - uses: actions/checkout@v2
+      
+      - name: Check for IITC-CE updates
+        run: |
+          curl -s https://api.github.com/repos/IITC-CE/ingress-intel-total-conversion/releases/latest | 
+          jq -r .tag_name > latest_iitc_version.txt
+          
+      - name: Create Issue if Update Available
+        if: success()
+        uses: actions/github-script@v6
         with:
-          source_repo: "https://gitlab.com/AlfonsoML/pogo-s2.git"
-          source_branch: "master"
-          destination_branch: "master"
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            const fs = require('fs');
+            const latestVersion = fs.readFileSync('latest_iitc_version.txt', 'utf8').trim();
+            const issue = await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `New IITC-CE version available: ${latestVersion}`,
+              body: `A new version of IITC-CE (${latestVersion}) has been released. Please check if any updates are needed for the Pikmin Bloom plugin.`
+            });
+            console.log(`Created issue #${issue.data.number}`);
