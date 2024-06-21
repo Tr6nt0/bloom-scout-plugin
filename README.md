@@ -20,7 +20,7 @@ This is a fork of the PoGO Tools IITC Plugin, adapted for Pikmin Bloom gameplay.
 ### Desktop
 1. Install Tampermonkey for your browser
 2. Install IITC-CE
-3. Click on this link to install the Pikmin Bloom Helper plugin: [Install Link]
+3. Click on this link to install the Pikmin Bloom Helper plugin: [Install Link](https://raw.githubusercontent.com/tr6nt0/iitc-pikmin-bloom/main/pikmin-bloom-tools.user.js) 
 
 ### Android
 1. Install IITC-CE
