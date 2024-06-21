@@ -20,17 +20,17 @@ This is a fork of the PoGO Tools IITC Plugin, adapted for Pikmin Bloom gameplay.
 ### Desktop
 1. Install Tampermonkey for your browser
 2. Install IITC-CE
-3. Click on this link to install the Bloom Scout plugin: [Install Link](https://raw.githubusercontent.com/Tr6nt0/bloom-scout-plugin/master/s2check.user.js)
+3. Click on this link to install the Bloom Scout plugin: [Install Link]([https://raw.githubusercontent.com/Tr6nt0/bloom-scout-plugin/master/s2check.user.js](https://raw.githubusercontent.com/Tr6nt0/bloom-scout-plugin/pogohwh/s2check.user.js))
 
 ### Android
 1. Install IITC-CE
-2. Open this link in IITC-CE: [Install Link](https://raw.githubusercontent.com/Tr6nt0/bloom-scout-plugin/master/s2check.user.js)
+2. Open this link in IITC-CE: [Install Link](https://raw.githubusercontent.com/Tr6nt0/bloom-scout-plugin/pogohwh/s2check.user.js)
 3. Follow the prompts to install the plugin
 
 ### iOS
 1. Install IITC-Mobile
 2. Go to Plugins -> Add new one
-3. Paste this URL: https://raw.githubusercontent.com/Tr6nt0/bloom-scout-plugin/main/s2check.user.js
+3. Paste this URL: [Install Link](https://raw.githubusercontent.com/Tr6nt0/bloom-scout-plugin/pogohwh/s2check.user.js)
 
 After installation, enable the plugin under User Plugins -> Layer.
 
