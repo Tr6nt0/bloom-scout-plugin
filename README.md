@@ -47,7 +47,7 @@ This is an open-source project, and contributions are welcome. Please submit iss
 
 ## Updates
 
-Follow [@PikminBloomHelper](https://twitter.com/PikminBloomHelper) for announcements about changes and new features.
+Follow [@PikminIITC](https://twitter.com/PikminIITC) for announcements about changes and new features.
 
 ## Credits
 
