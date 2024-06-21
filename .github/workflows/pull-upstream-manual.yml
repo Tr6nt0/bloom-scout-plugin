@@ -1,4 +1,4 @@
-name: Manual Inputs
+name: Manual Version Bump and Sync
 on: 
   workflow_dispatch:
     inputs:
@@ -7,14 +7,25 @@ on:
         default: v1.0.0
         required: true
 jobs:
-  repo-sync:
+  version-bump-and-sync:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
-      - name: repo-sync
-        uses: repo-sync/github-sync@v2
+      - uses: actions/checkout@v2
+      - name: Update version
+        run: |
+          sed -i 's/version: "[0-9.]*"/version: "${{ github.event.inputs.version }}"/' plugin.user.js
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add plugin.user.js
+          git commit -m "Bump version to ${{ github.event.inputs.version }}"
+          git push
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          source_repo: "https://gitlab.com/AlfonsoML/pogo-s2.git"
-          source_branch: "master"
-          destination_branch: "master"
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          tag_name: ${{ github.event.inputs.version }}
+          release_name: Release ${{ github.event.inputs.version }}
+          draft: false
+          prerelease: false
